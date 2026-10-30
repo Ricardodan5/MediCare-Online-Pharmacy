@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% block title %}My Prescriptions | MediCare{% endblock %}
+
+{% block content %}
+
+<section class="account-section">
+
+    <div class="account-card">
+
+        <h1>My Prescriptions</h1>
+
+        <p>
+            Upload your doctor's prescription for review
+            by a qualified pharmacist.
+        </p>
+
+        <hr>
+
+        <h3>Upload a New Prescription</h3>
+
+        <form method="POST" enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+            {% for field in form %}
+                <div class="form-group">
+
+                    <label for="{{ field.id_for_label }}">
+                        {{ field.label }}
+                    </label>
+
+                    {{ field }}
+
+                    {% for error in field.errors %}
+                        <p class="error">{{ error }}</p>
+                    {% endfor %}
+
+                </div>
+            {% endfor %}
+
+            {% if form.non_field_errors %}
+                {% for error in form.non_field_errors %}
+                    <p class="error">{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+
+            <p class="small-heading">
+                Accepted formats: PDF, JPG and PNG. Maximum size: 5 MB.
+            </p>
+
+            <button type="submit" class="main-button">
+                Submit Prescription
+            </button>
+
+        </form>
+
+        <hr>
+
+        <h3>My Uploaded Prescriptions</h3>
+
+        {% if prescriptions %}
+
+            {% for prescription in prescriptions %}
+
+                <div class="profile-information">
+
+                    <p>
+                        <strong>File:</strong>
+                        {{ prescription.prescription_file.name|cut:"prescriptions/" }}
+                    </p>
+
+                    <p>
+                        <strong>Description:</strong>
+                        {{ prescription.description|default:"No description provided" }}
+                    </p>
+
+                    <p>
+                        <strong>Status:</strong>
+                        {{ prescription.get_status_display }}
+                    </p>
+
+                    <p>
+                        <strong>Uploaded:</strong>
+                        {{ prescription.uploaded_at|date:"d M Y, H:i" }}
+                    </p>
+
+                    {% if prescription.pharmacist_note %}
+                        <p>
+                            <strong>Pharmacist's Note:</strong>
+                            {{ prescription.pharmacist_note }}
+                        </p>
+                    {% endif %}
+
+                </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <p>You have not uploaded any prescriptions yet.</p>
+
+        {% endif %}
+
+        <a href="{% url 'profile' %}" class="main-button">
+            Back to My Profile
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}

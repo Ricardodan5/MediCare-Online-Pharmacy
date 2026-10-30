@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %}Customer Login | MediCare{% endblock %}
+
+{% block content %}
+
+<section class="account-section">
+
+    <div class="account-card">
+
+        <h1>Welcome Back</h1>
+
+        <p>Login to access your MediCare account.</p>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            {% if form.non_field_errors %}
+                <div class="error">
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+
+            <div class="form-group">
+                <label for="{{ form.username.id_for_label }}">
+                    Username
+                </label>
+
+                {{ form.username }}
+
+                {% for error in form.username.errors %}
+                    <p class="error">{{ error }}</p>
+                {% endfor %}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.password.id_for_label }}">
+                    Password
+                </label>
+
+                {{ form.password }}
+
+                {% for error in form.password.errors %}
+                    <p class="error">{{ error }}</p>
+                {% endfor %}
+            </div>
+
+            <input
+                type="hidden"
+                name="next"
+                value="{{ next }}"
+            >
+
+            <button type="submit" class="main-button">
+                Login
+            </button>
+
+        </form>
+
+        <p class="account-link">
+            Don't have an account?
+            <a href="{% url 'register' %}">Register here</a>
+        </p>
+
+    </div>
+
+</section>
+
+{% endblock %}

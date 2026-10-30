@@ -1,0 +1,78 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}MediCare Online Pharmacy{% endblock %}</title>
+
+    <link rel="stylesheet"
+          href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+<header>
+    <nav class="navbar">
+
+        <a href="{% url 'home' %}" class="logo">
+            Medi<span>Care</span>
+        </a>
+
+        <div class="nav-links">
+
+            <a href="{% url 'home' %}">Home</a>
+
+            {% if user.is_authenticated %}
+
+                <a href="{% url 'profile' %}">My Profile</a>
+
+                <form method="POST"
+                      action="{% url 'logout' %}"
+                      class="nav-logout">
+                    {% csrf_token %}
+                    <button type="submit">Logout</button>
+                </form>
+
+            {% else %}
+
+                <a href="{% url 'login' %}">Login</a>
+
+                <a href="{% url 'register' %}">
+                    Register
+                </a>
+
+            {% endif %}
+
+        </div>
+
+    </nav>
+</header>
+
+{% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    </div>
+{% endif %}
+
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+
+<footer>
+    <p>
+        &copy; 2026 MediCare Online Pharmacy.
+        Academic Project.
+    </p>
+</footer>
+
+</body>
+</html>

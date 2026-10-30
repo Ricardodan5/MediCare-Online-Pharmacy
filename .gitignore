@@ -1,0 +1,19 @@
+# Virtual environment
+venv/
+.venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Database
+db.sqlite3
+
+# Customer uploads
+media/
+
+# Secret settings
+.env
+
+# Django collected static files
+staticfiles/

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Home | MediCare{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <p class="small-heading">
+            YOUR HEALTH, OUR PRIORITY
+        </p>
+
+        <h1>
+            Your Prescription.
+            <span>Our Care.</span>
+            Delivered to Your Door.
+        </h1>
+
+        <p>
+            Upload your doctor's prescription,
+            have it reviewed by a qualified pharmacist,
+            and receive approved medicines at your doorstep.
+        </p>
+
+        {% if user.is_authenticated %}
+
+            <a href="{% url 'profile' %}"
+               class="main-button">
+                Visit My Profile
+            </a>
+
+        {% else %}
+
+            <a href="{% url 'register' %}"
+               class="main-button">
+                Create Your Account
+            </a>
+
+        {% endif %}
+
+    </div>
+
+    <div class="hero-card">
+        <div class="health-icon">✚</div>
+        <h2>Healthcare Made Easier</h2>
+        <p>
+            Convenient, secure and reliable pharmacy services.
+        </p>
+    </div>
+
+</section>
+
+{% endblock %}

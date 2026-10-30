@@ -1,0 +1,494 @@
+/* CUSTOMER ACCOUNT PAGES */
+
+.account-section {
+    background: #eaf7f1;
+    padding: 65px 20px;
+    min-height: 75vh;
+}
+
+.account-card {
+    background: #ffffff;
+    max-width: 520px;
+    margin: auto;
+    padding: 35px;
+    border-radius: 14px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.07);
+}
+
+.account-card h1 {
+    color: #087c59;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.account-card > p {
+    text-align: center;
+    color: #718078;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd9d1;
+    border-radius: 7px;
+    font-size: 15px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: 2px solid #087c59;
+    border-color: #087c59;
+}
+
+.account-card button.main-button {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.account-link {
+    margin-top: 22px;
+    text-align: center;
+}
+
+.account-link a {
+    color: #087c59;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.error {
+    color: #c62828;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.messages {
+    background: #e0f3e9;
+    color: #087c59;
+    padding: 12px;
+    text-align: center;
+}
+
+.profile-card {
+    max-width: 650px;
+}
+
+.profile-information {
+    background: #f3faf6;
+    padding: 20px;
+    border-radius: 9px;
+    margin: 20px 0;
+}
+
+.profile-information h3 {
+    color: #087c59;
+    margin-bottom: 12px;
+}
+
+.profile-information p {
+    margin-bottom: 9px;
+}
+
+.profile-card hr {
+    border: 0;
+    border-top: 1px solid #e2eae5;
+    margin: 25px 0;
+}
+
+.logout-button {
+    background: #ffffff;
+    color: #b3261e;
+    border: 1px solid #b3261e;
+    padding: 11px;
+    border-radius: 7px;
+    width: 100%;
+    margin-top: 15px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.logout-button:hover {
+    background: #fff0ef;
+}
+
+.nav-logout {
+    display: inline;
+}
+
+.nav-logout button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: #35443e;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.nav-logout button:hover {
+    color: #087c59;
+}
+
+@media (max-width: 550px) {
+    .account-card {
+        padding: 23px;
+    }
+}
+/* =====================================
+   MEDICARE ONLINE PHARMACY
+   GLOBAL WEBSITE STYLING
+===================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f7faf8;
+    color: #26352e;
+    line-height: 1.6;
+}
+
+/* NAVIGATION BAR */
+
+header {
+    background: #ffffff;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: auto;
+    padding: 18px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: bold;
+    color: #087c59;
+    text-decoration: none;
+}
+
+.logo span {
+    color: #36b982;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.nav-links a {
+    color: #35443e;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #087c59;
+}
+
+/* HERO SECTION */
+
+.hero {
+    max-width: 1200px;
+    margin: 65px auto;
+    padding: 45px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.hero-content {
+    flex: 1;
+}
+
+.small-heading {
+    color: #087c59;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.hero-content h1 {
+    font-size: clamp(36px, 5vw, 55px);
+    line-height: 1.2;
+    color: #183b2d;
+    margin-bottom: 22px;
+}
+
+.hero-content h1 span {
+    color: #16a36e;
+}
+
+.hero-content > p:not(.small-heading) {
+    max-width: 570px;
+    color: #68776f;
+    font-size: 17px;
+    margin-bottom: 30px;
+}
+
+/* BUTTONS */
+
+.main-button {
+    display: inline-block;
+    background: #087c59;
+    color: #ffffff;
+    padding: 14px 27px;
+    border: none;
+    border-radius: 7px;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.main-button:hover {
+    background: #065d43;
+    transform: translateY(-2px);
+}
+
+/* HEALTHCARE CARD */
+
+.hero-card {
+    flex: 0 0 340px;
+    background: #e4f5ec;
+    padding: 45px 30px;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+
+.health-icon {
+    width: 85px;
+    height: 85px;
+    margin: 0 auto 20px;
+    background: #087c59;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 42px;
+}
+
+.hero-card h2 {
+    color: #087c59;
+    margin-bottom: 12px;
+}
+
+.hero-card p {
+    color: #68776f;
+}
+
+/* FOOTER */
+
+footer {
+    background: #123b2c;
+    color: #ffffff;
+    text-align: center;
+    padding: 22px;
+    margin-top: 50px;
+}
+
+/* CUSTOMER ACCOUNT PAGES */
+
+.account-section {
+    background: #eaf7f1;
+    padding: 65px 20px;
+    min-height: 75vh;
+}
+
+.account-card {
+    background: #ffffff;
+    max-width: 520px;
+    margin: auto;
+    padding: 35px;
+    border-radius: 14px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.07);
+}
+
+.account-card h1 {
+    color: #087c59;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.account-card > p {
+    text-align: center;
+    color: #718078;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd9d1;
+    border-radius: 7px;
+    font-size: 15px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: 2px solid #087c59;
+    border-color: #087c59;
+}
+
+.account-card button.main-button {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.account-link {
+    margin-top: 22px;
+    text-align: center;
+}
+
+.account-link a {
+    color: #087c59;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.error {
+    color: #c62828;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.messages {
+    background: #e0f3e9;
+    color: #087c59;
+    padding: 12px;
+    text-align: center;
+}
+
+.profile-card {
+    max-width: 650px;
+}
+
+.profile-information {
+    background: #f3faf6;
+    padding: 20px;
+    border-radius: 9px;
+    margin: 20px 0;
+}
+
+.profile-information h3 {
+    color: #087c59;
+    margin-bottom: 12px;
+}
+
+.profile-information p {
+    margin-bottom: 9px;
+}
+
+.profile-card hr {
+    border: 0;
+    border-top: 1px solid #e2eae5;
+    margin: 25px 0;
+}
+
+.logout-button {
+    background: #ffffff;
+    color: #b3261e;
+    border: 1px solid #b3261e;
+    padding: 11px;
+    border-radius: 7px;
+    width: 100%;
+    margin-top: 15px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.logout-button:hover {
+    background: #fff0ef;
+}
+
+.nav-logout {
+    display: inline;
+}
+
+.nav-logout button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: #35443e;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.nav-logout button:hover {
+    color: #087c59;
+}
+
+/* MOBILE RESPONSIVENESS */
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        margin: 25px auto;
+    }
+
+    .hero-content > p:not(.small-heading) {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-card {
+        flex-basis: auto;
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .account-card {
+        padding: 23px;
+    }
+}

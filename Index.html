@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediCare Online Pharmacy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">Medi<span>Care</span></a>
+
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#upload">Upload Prescription</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <a href="#upload" class="nav-button">Get Started</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <p class="small-heading">YOUR HEALTH, OUR PRIORITY</p>
+
+            <h1>
+                Your Prescription.
+                <span>Our Care.</span>
+                Delivered to Your Door.
+            </h1>
+
+            <p>
+                Upload your doctor's prescription, let our qualified
+                pharmacist review it, and receive your approved
+                medicines at your doorstep.
+            </p>
+
+            <a href="#upload" class="main-button">
+                Upload Prescription
+            </a>
+        </div>
+
+        <div class="hero-card">
+            <div class="health-icon">✚</div>
+            <h2>Healthcare Made Easier</h2>
+            <p>Convenient, secure and reliable pharmacy services.</p>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="services">
+        <h2>Our Services</h2>
+        <p class="section-description">
+            Making access to pharmacy services easier.
+        </p>
+
+        <div class="service-container">
+            <div class="service-card">
+                <div class="service-icon">📄</div>
+                <h3>Prescription Upload</h3>
+                <p>Submit your doctor's prescription online.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">👨‍⚕️</div>
+                <h3>Pharmacist Verification</h3>
+                <p>Prescriptions are reviewed by a qualified pharmacist.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🚚</div>
+                <h3>Home Delivery</h3>
+                <p>Receive approved medicines at your delivery address.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <h2>How It Works</h2>
+
+        <div class="steps">
+            <div class="step">
+                <span>01</span>
+                <h3>Upload</h3>
+                <p>Upload a clear copy of your prescription.</p>
+            </div>
+
+            <div class="step">
+                <span>02</span>
+                <h3>Verification</h3>
+                <p>A pharmacist reviews your prescription.</p>
+            </div>
+
+            <div class="step">
+                <span>03</span>
+                <h3>Confirm Order</h3>
+                <p>Provide delivery details and confirm the order.</p>
+            </div>
+
+            <div class="step">
+                <span>04</span>
+                <h3>Delivery</h3>
+                <p>Receive your approved medicines.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prescription Upload -->
+    <section class="upload-section" id="upload">
+        <h2>Upload Your Prescription</h2>
+        <p>
+            Submit your prescription for review by our pharmacy team.
+        </p>
+
+        <form id="prescriptionForm">
+            <label for="prescription">
+                Select Prescription (PDF, JPG or PNG)
+            </label>
+
+            <input
+                type="file"
+                id="prescription"
+                accept=".pdf,.jpg,.jpeg,.png"
+                required
+            >
+
+            <p id="fileName">No file selected.</p>
+
+            <button type="submit" class="main-button">
+                Submit for Review
+            </button>
+
+            <p id="message" aria-live="polite"></p>
+        </form>
+
+        <p class="notice">
+            Academic prototype: files are not transmitted or stored.
+            A real pharmacy must use secure storage and pharmacist review.
+        </p>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <h2>Contact MediCare</h2>
+        <p>Email: support@medicare.example</p>
+        <p>Location: Ghana</p>
+        <p>Customer Support: Contact details to be added.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 MediCare Online Pharmacy. Academic Project.</p>
+        <p>Your Prescription. Our Care. Delivered to Your Door.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
