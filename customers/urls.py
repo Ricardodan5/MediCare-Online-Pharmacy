@@ -1,3 +1,4 @@
+
 from django.urls import path
 from django.contrib.auth import views as auth_views
 
@@ -31,8 +32,14 @@ urlpatterns = [
     ),
 
     path(
-    "prescriptions/",
-    views.prescriptions,
-    name="prescriptions"
+        "prescriptions/",
+        views.prescriptions,
+        name="prescriptions"
+    ),
+
+    path(
+        "prescriptions/<int:pk>/file/",
+        views.view_prescription_file,
+        name="view_prescription_file"
     ),
 ]

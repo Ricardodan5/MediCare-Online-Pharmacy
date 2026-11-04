@@ -6,7 +6,7 @@
 
 <section class="account-section">
 
-    <div class="account-card">
+    <div class="account-card prescriptions-page-card">
 
         <h1>My Prescriptions</h1>
 
@@ -59,48 +59,70 @@
 
         <h3>My Uploaded Prescriptions</h3>
 
-        {% if prescriptions %}
+       {% if prescriptions %}
 
-            {% for prescription in prescriptions %}
+    <div class="prescription-grid">
 
-                <div class="profile-information">
+        {% for prescription in prescriptions %}
 
-                    <p>
-                        <strong>File:</strong>
-                        {{ prescription.prescription_file.name|cut:"prescriptions/" }}
-                    </p>
+            <article class="prescription-card">
 
-                    <p>
-                        <strong>Description:</strong>
-                        {{ prescription.description|default:"No description provided" }}
-                    </p>
+                <h3>Prescription {{ forloop.counter }}</h3>
 
-                    <p>
-                        <strong>Status:</strong>
-                        {{ prescription.get_status_display }}
-                    </p>
+                <p>
+                    <strong>File:</strong>
+                    {{ prescription.prescription_file.name|cut:"prescriptions/" }}
+                </p>
 
-                    <p>
-                        <strong>Uploaded:</strong>
-                        {{ prescription.uploaded_at|date:"d M Y, H:i" }}
-                    </p>
+                 <a
+                    href="{% url 'view_prescription_file' prescription.pk %}"
+                    class="main-button"
+         >
+                    View / Download Prescription
+                </a>
 
-                    {% if prescription.pharmacist_note %}
-                        <p>
-                            <strong>Pharmacist's Note:</strong>
-                            {{ prescription.pharmacist_note }}
-                        </p>
+                <p>
+                    <strong>Description:</strong>
+                    {{ prescription.description|default:"No description provided" }}
+                </p>
+
+                <p>
+                    <strong>Status:</strong>
+
+                    {% if prescription.status == "Approved" %}
+                        <span class="status-approved">Approved</span>
+                    {% elif prescription.status == "Rejected" %}
+                        <span class="status-rejected">Rejected</span>
+                    {% else %}
+                        <span class="status-pending">Pending Review</span>
                     {% endif %}
+                </p>
 
-                </div>
+                {% if prescription.pharmacist_note %}
+                    <p>
+                        <strong>Pharmacist's Note:</strong>
+                        {{ prescription.pharmacist_note }}
+                    </p>
+                {% endif %}
 
-            {% endfor %}
+                <p>
+                    <strong>Uploaded:</strong>
+                    {{ prescription.uploaded_at|date:"d M Y, H:i" }}
+                </p>
 
-        {% else %}
+            </article>
 
-            <p>You have not uploaded any prescriptions yet.</p>
+        {% endfor %}
 
-        {% endif %}
+    </div>
+
+{% else %}
+
+    <p>You have not uploaded any prescriptions yet.</p>
+
+{% endif %}
+
+        <hr>
 
         <a href="{% url 'profile' %}" class="main-button">
             Back to My Profile

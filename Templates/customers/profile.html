@@ -5,15 +5,13 @@
 {% block content %}
 
 <section class="account-section">
-
     <div class="account-card profile-card">
 
         <h1>My Customer Profile</h1>
-
         <p>Manage your personal and delivery information.</p>
 
+        <!-- Account Information -->
         <div class="profile-information">
-
             <h3>Account Information</h3>
 
             <p>
@@ -30,11 +28,11 @@
                 <strong>Email:</strong>
                 {{ request.user.email }}
             </p>
-
         </div>
 
         <hr>
 
+        <!-- Delivery Information -->
         <h3>Delivery Information</h3>
 
         <form method="POST">
@@ -42,7 +40,6 @@
 
             {% for field in form %}
                 <div class="form-group">
-
                     <label for="{{ field.id_for_label }}">
                         {{ field.label }}
                     </label>
@@ -52,38 +49,46 @@
                     {% for error in field.errors %}
                         <p class="error">{{ error }}</p>
                     {% endfor %}
-
                 </div>
             {% endfor %}
 
             <button type="submit" class="main-button">
                 Update Profile
             </button>
-
         </form>
 
+        <hr>
+
+                <!-- Prescription Services -->
+        <div class="prescription-services">
+            <h3>Prescription Services</h3>
+
+            <p>
+                Submit your doctor's prescription
+                for pharmacist review.
+            </p>
+
+            <a href="{% url 'prescriptions' %}" class="main-button">
+                Upload Prescription
+            </a>
+
+            <a href="{% url 'prescriptions' %}" class="main-button">
+                View My Prescriptions and Status
+            </a>
+        </div>
+
+        <hr>
+
+        <!-- Logout -->
         <form method="POST" action="{% url 'logout' %}">
             {% csrf_token %}
 
             <button type="submit" class="logout-button">
                 Logout
-                        <hr>
-
-        <h3>Prescription Services</h3>
-
-        <p>
-            Submit your doctor's prescription
-            for pharmacist review.
-        </p>
-
-        <a href="{% url 'prescriptions' %}" class="main-button">
-            Upload Prescription
-        </a>
             </button>
         </form>
 
     </div>
-
 </section>
 
 {% endblock %}
