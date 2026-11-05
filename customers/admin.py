@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import CustomerProfile
+from .models import CustomerProfile,Prescription
 
 
 @admin.register(CustomerProfile)
@@ -18,3 +18,9 @@ class CustomerProfileAdmin(admin.ModelAdmin):
         "phone",
         "city",
     )
+
+    @admin.register(Prescription)
+    class PrescriptionAdmin(admin.ModelAdmin):
+        list_display = ("id", "customer", "status", "uploaded_at")
+        list_display_links = ("id",)
+        list_filter = ("status",)

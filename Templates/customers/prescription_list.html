@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Prescription List</h2>
+
+{% for prescription in prescriptions %}
+
+    <div>
+        <p>Customer: {{ prescription.customer }}</p>
+
+        <p>Status: {{ prescription.status }}</p>
+
+        <a href="{% url 'review_prescription' prescription.id %}">
+            Review Prescription
+        </a>
+    </div>
+
+    <hr>
+
+{% empty %}
+
+    <p>No prescriptions have been submitted yet.</p>
+
+{% endfor %}
+
+{% endblock %}

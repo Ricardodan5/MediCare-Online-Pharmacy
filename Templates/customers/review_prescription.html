@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Review Prescription</h2>
+
+<p><strong>Customer:</strong> {{ prescription.customer }}</p>
+
+<p><strong>Prescription File:</strong>
+    <a href="{{ prescription.prescription_file.url }}">View Prescription</a>
+</p>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <label for="status">Prescription Status:</label>
+
+    <select name="status" id="status">
+        <option value="pending">Pending Review</option>
+        <option value="approved">Approved</option>
+        <option value="rejected">Rejected</option>
+    </select>
+
+    <br><br>
+
+    <label for="pharmacist_note">Pharmacist Notes:</label>
+
+    <textarea name="pharmacist_note" id="pharmacist_note"></textarea>
+
+    <br><br>
+
+    <button type="submit">Submit Review</button>
+</form>
+
+{% endblock %}
