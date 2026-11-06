@@ -38,4 +38,6 @@ path('prescriptions/list/', views.prescription_list, name='prescription_list'),
 
 path('prescriptions/<int:prescription_id>/review/', views.review_prescription, name='review_prescription'),
 path('inventory/', include('inventory.urls')),
+
+path('availability/', include('availability.urls')),
 ]
