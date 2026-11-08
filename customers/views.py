@@ -124,6 +124,38 @@ def prescriptions(request):
             "prescriptions": customer_prescriptions,
         }
     )
+    
+@login_required
+def review_prescription(request, prescription_id):
+    prescription = get_object_or_404(Prescription, id=prescription_id)
+
+    if request.method == 'POST':
+        status = request.POST.get('status')
+        pharmacist_note = request.POST.get('pharmacist_note')
+
+        if status in ['approved', 'rejected']:
+            prescription.status = status
+            prescription.pharmacist_note = pharmacist_note
+            prescription.save()
+
+            messages.success(request, 'Prescription reviewed successfully.')
+            return redirect('prescription_list')
+
+    return render(request, 'customers/review_prescription.html', {
+        'prescription': prescription
+    })            
+
+@login_required
+def prescription_list(request):
+    prescriptions =  Prescription.objects.all().order_by("-id")
+
+    return render(request, "customers/prescription_list.html",{
+        "prescriptions":prescriptions
+    })
+
+
+        
+    
 
 
 @login_required

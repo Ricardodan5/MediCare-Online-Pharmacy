@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine Availability Checker</title>
+</head>
+<body>
+
+    <h1>Check Medicine Availability</h1>
+
+    <form method="GET">
+        <input
+            type="text"
+            name="q"
+            placeholder="Enter medicine name"
+            value="{{ query }}"
+            required
+        >
+        <button type="submit">Search</button>
+    </form>
+
+    {% if query %}
+        <h2>Search Results</h2>
+
+        {% for medicine in medicines %}
+            <div>
+                <h3>{{ medicine.name }}</h3>
+
+                {% if medicine.quantity > 0 %}
+                    <p>Available</p>
+                {% else %}
+                    <p>Out of Stock</p>
+                {% endif %}
+            </div>
+        {% empty %}
+            <p>No matching medicine found.</p>
+        {% endfor %}
+    {% endif %}
+
+</body>
+</html>

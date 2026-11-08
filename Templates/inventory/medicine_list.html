@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharmacy Inventory</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7f6;
+            margin: 0;
+            padding: 30px;
+            color: #263238;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        h1 {
+            color: #087f5b;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .add-button {
+            background: #087f5b;
+            color: white;
+            padding: 12px 18px;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+
+        .table-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 650px;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e5eaea;
+        }
+
+        th {
+            background: #e8f5ef;
+            color: #087f5b;
+        }
+
+        .low-stock {
+            color: #d97706;
+            font-weight: bold;
+        }
+
+        .in-stock {
+            color: #087f5b;
+            font-weight: bold;
+        }
+
+        .empty {
+            text-align: center;
+            padding: 30px;
+            color: #777;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+
+    <div class="top-bar">
+        <div>
+            <h1>Pharmacy Inventory</h1>
+            <p>Manage medicines and monitor available stock.</p>
+        </div>
+
+        <a href="{% url 'add_medicine' %}" class="add-button">
+            + Add New Medicine
+        </a>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Medicine</th>
+                    <th>Category</th>
+                    <th>Price (GHS)</th>
+                    <th>Quantity</th>
+                    <th>Expiry Date</th>
+                    <th>Stock Status</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for medicine in medicines %}
+                <tr>
+                    <td>{{ medicine.name }}</td>
+                    <td>{{ medicine.category }}</td>
+                    <td>{{ medicine.price }}</td>
+                    <td>{{ medicine.quantity }}</td>
+                    <td>{{ medicine.expiry_date }}</td>
+
+                    <td>
+                        {% if medicine.quantity == 0 %}
+    <span style="color: red; font-weight: bold;">Out of Stock</span>
+
+{% elif medicine.quantity <= medicine.low_stock_threshold %}
+    <span class="low-stock">Low Stock</span>
+
+{% else %}
+    <span class="in-stock">In Stock</span>
+{% endif %}
+                    </td>
+                </tr>
+
+                {% empty %}
+                <tr>
+                    <td colspan="6" class="empty">
+                        No medicines have been added yet.
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+</body>
+</html>

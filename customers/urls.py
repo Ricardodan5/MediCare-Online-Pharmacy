@@ -1,3 +1,4 @@
+from django.urls import path, include
 
 from django.urls import path
 from django.contrib.auth import views as auth_views
@@ -5,8 +6,8 @@ from django.contrib.auth import views as auth_views
 from . import views
 
 urlpatterns = [
-    path(
-        "register/",
+    path(        "register/",
+
         views.register,
         name="register"
     ),
@@ -31,6 +32,17 @@ urlpatterns = [
         name="profile"
     ),
 
+   path(
+    "prescriptions/", views.prescriptions, name="prescriptions"
+),
+
+path('prescriptions/list/', views.prescription_list, name='prescription_list'),
+
+path('prescriptions/<int:prescription_id>/review/', views.review_prescription, name='review_prescription'),
+path('inventory/', include('inventory.urls')),
+
+path('availability/', include('availability.urls')),
+]
     path(
         "prescriptions/",
         views.prescriptions,
