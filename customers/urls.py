@@ -1,4 +1,6 @@
 from django.urls import path, include
+
+from django.urls import path
 from django.contrib.auth import views as auth_views
 
 from . import views
@@ -40,4 +42,16 @@ path('prescriptions/<int:prescription_id>/review/', views.review_prescription, n
 path('inventory/', include('inventory.urls')),
 
 path('availability/', include('availability.urls')),
+]
+    path(
+        "prescriptions/",
+        views.prescriptions,
+        name="prescriptions"
+    ),
+
+    path(
+        "prescriptions/<int:pk>/file/",
+        views.view_prescription_file,
+        name="view_prescription_file"
+    ),
 ]

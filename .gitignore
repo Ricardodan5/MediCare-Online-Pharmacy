@@ -17,3 +17,9 @@ media/
 
 # Django collected static files
 staticfiles/
+
+# Uploaded prescription files
+prescriptions/
+
+# User-uploaded media
+media/
