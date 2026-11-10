@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}My Medicine Orders - Medicare{% endblock %}
+
+{% block content %}
+<section class="container">
+    <h2>My Medicine Orders</h2>
+
+    {% if orders %}
+        {% for order in orders %}
+            <div class="order-card">
+                <h3>{{ order.medicine_name }}</h3>
+
+                <p><strong>Quantity:</strong> {{ order.quantity }}</p>
+
+                <p><strong>Order Date:</strong> {{ order.order_date }}</p>
+
+                <p><strong>Status:</strong> {{ order.status }}</p>
+
+                <a href="{% url 'track_order' order.id %}">
+                    Track This Order
+                </a>
+            </div>
+            <hr>
+        {% endfor %}
+    {% else %}
+        <p>You have not placed any medicine orders yet.</p>
+    {% endif %}
+
+    <a href="{% url 'place_order' %}">Place a New Order</a>
+</section>
+{% endblock %}

@@ -9,10 +9,11 @@ from django.http import FileResponse, Http404
 from .forms import (
     CustomerRegistrationForm,
     CustomerProfileForm,
-    PrescriptionUploadForm
+    PrescriptionUploadForm,
+    MedicineOrderForm
 )
 
-from .models import CustomerProfile, Prescription
+from .models import CustomerProfile, Prescription, MedicineOrder
 
 
 def register(request):
@@ -153,7 +154,130 @@ def prescription_list(request):
         "prescriptions":prescriptions
     })
 
+@login_required
+def place_order(request):
 
+    if request.method == "POST":
+        form = MedicineOrderForm(request.POST)
+
+        if form.is_valid():
+            order = form.save(commit=False)
+            order.customer = request.user
+            order.save()
+
+            messages.success(
+                request,
+                "Your medicine order has been placed successfully!"
+            )
+
+            return redirect("my_orders")
+
+    else:
+        form = MedicineOrderForm()
+
+    return render(
+        request,
+        "customers/place_order.html",
+        {"form": form}
+    )
+
+@login_required
+def my_orders(request):
+
+    orders = MedicineOrder.objects.filter(
+        customer=request.user
+    ).order_by("-order_date")
+
+    return render(
+        request,
+        "customers/my_orders.html",
+        {"orders": orders}
+    )
+
+@login_required
+def track_order(request, order_id):
+
+    order = get_object_or_404(
+        MedicineOrder,
+        id=order_id,
+        customer=request.user
+    )
+
+    return render(
+        request,
+        "customers/track_order.html",
+        {"order": order}
+    )
+
+@login_required
+def track_order(request, order_id):
+
+    order = get_object_or_404(
+        MedicineOrder,
+        id=order_id,
+        customer=request.user
+    )
+
+    return render(
+        request,
+        "customers/track_order.html",
+        {"order": order}
+    )
+
+@login_required
+def track_order(request, order_id):
+
+    order = get_object_or_404(
+        MedicineOrder,
+        id=order_id,
+        customer=request.user
+    )
+
+    return render(
+        request,
+        "customers/track_order.html",
+        {"order": order}
+    )
+
+@login_required
+def update_order_status(request, order_id):
+
+    if not request.user.is_staff:
+        messages.error(
+            request,
+            "You are not authorised to update orders."
+        )
+        return redirect("my_orders")
+
+    order = get_object_or_404(
+        MedicineOrder,
+        id=order_id
+    )
+
+    if request.method == "POST":
+        status = request.POST.get("status")
+
+        valid_statuses = [
+            choice[0]
+            for choice in MedicineOrder.STATUS_CHOICES
+        ]
+
+        if status in valid_statuses:
+            order.status = status
+            order.save()
+
+            messages.success(
+                request,
+                "Order status updated successfully."
+            )
+
+            return redirect("my_orders")
+
+    return render(
+        request,
+        "customers/update_order_status.html",
+        {"order": order}
+    )
         
     
 

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Place Medicine Order - Medicare{% endblock %}
+
+{% block content %}
+<section class="container">
+    <h2>Place a Medicine Order</h2>
+
+    <p>Fill in the details below to place your medicine order.</p>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit">Place Order</button>
+    </form>
+
+    <p>
+        <a href="{% url 'my_orders' %}">View My Orders</a>
+    </p>
+</section>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Track Medicine Order - Medicare{% endblock %}
+
+{% block content %}
+<section class="container">
+    <h2>Medicine Order Tracking</h2>
+
+    <div class="order-card">
+        <h3>{{ order.medicine_name }}</h3>
+
+        <p><strong>Order ID:</strong> {{ order.id }}</p>
+
+        <p><strong>Quantity:</strong> {{ order.quantity }}</p>
+
+        <p><strong>Delivery Address:</strong> {{ order.delivery_address }}</p>
+
+        <p><strong>Contact Number:</strong> {{ order.phone }}</p>
+
+        <p><strong>Order Status:</strong> {{ order.status }}</p>
+
+        <p><strong>Order Date:</strong> {{ order.order_date }}</p>
+
+        <p><strong>Last Updated:</strong> {{ order.updated_at }}</p>
+    </div>
+
+    <a href="{% url 'my_orders' %}">Back to My Orders</a>
+</section>
+{% endblock %}
