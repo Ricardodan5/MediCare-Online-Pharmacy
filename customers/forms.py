@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
-from .models import CustomerProfile, Prescription
+from .models import CustomerProfile, Prescription, MedicineOrder
 
 class CustomerRegistrationForm(UserCreationForm):
 
@@ -107,3 +107,29 @@ class PrescriptionUploadForm(forms.ModelForm):
 
         return uploaded_file
 
+
+class MedicineOrderForm(forms.ModelForm):
+
+    class Meta:
+        model = MedicineOrder
+        fields = [
+            "medicine_name",
+            "quantity",
+            "delivery_address",
+            "phone",
+        ]
+
+        widgets = {
+            "medicine_name": forms.TextInput(
+                attrs={"placeholder": "Enter medicine name"}
+            ),
+            "quantity": forms.NumberInput(
+                attrs={"min": 1}
+            ),
+            "delivery_address": forms.Textarea(
+                attrs={"rows": 3}
+            ),
+            "phone": forms.TextInput(
+                attrs={"placeholder": "Enter contact number"}
+            ),
+        }

@@ -37,7 +37,13 @@ urlpatterns = [
 path('prescriptions/list/', views.prescription_list, name='prescription_list'),
 
 path('prescriptions/<int:prescription_id>/review/', views.review_prescription, name='review_prescription'),
-path('inventory/', include('inventory.urls')),
 
-path('availability/', include('availability.urls')),
+
+path('orders/place/', views.place_order, name='place_order'),
+
+path('orders/', views.my_orders, name='my_orders'),
+
+path('orders/<int:order_id>/', views.track_order, name='track_order'),
+
+path('orders/<int:order_id>/update/', views.update_order_status, name='update_order_status'),
 ]

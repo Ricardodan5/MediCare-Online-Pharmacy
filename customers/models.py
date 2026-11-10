@@ -74,7 +74,44 @@ class Prescription(models.Model):
 
     def __str__(self):
         return f"Prescription - {self.customer.username} ({self.status})"
+    
 
+class MedicineOrder(models.Model):
 
+    STATUS_CHOICES = [
+        ("Pending", "Pending"),
+        ("Confirmed", "Confirmed"),
+        ("Processing", "Processing"),
+        ("Dispatched", "Dispatched"),
+        ("Delivered", "Delivered"),
+        ("Cancelled", "Cancelled"),
+    ]
+
+    customer = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name="medicine_orders"
+    )
+
+    medicine_name = models.CharField(max_length=200)
+
+    quantity = models.PositiveIntegerField(default=1)
+
+    delivery_address = models.TextField()
+
+    phone = models.CharField(max_length=20)
+
+    status = models.CharField(
+        max_length=20,
+        choices=STATUS_CHOICES,
+        default="Pending"
+    )
+
+    order_date = models.DateTimeField(auto_now_add=True)
+
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"{self.medicine_name} - {self.customer.username} ({self.status})"
 
 
