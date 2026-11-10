@@ -1,8 +1,10 @@
-from django.shortcuts import render, redirect,get_object_or_404
+
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db import transaction
+from django.http import FileResponse, Http404
 
 from .forms import (
     CustomerRegistrationForm,
@@ -278,4 +280,39 @@ def update_order_status(request, order_id):
     )
         
     
+
+
+@login_required
+def view_prescription_file(request, pk):
+
+    prescription = get_object_or_404(
+        Prescription,
+        pk=pk
+    )
+
+    # Customers can only access their own prescriptions.
+    # Authorised staff can access prescriptions for review.
+    if (
+        prescription.customer_id != request.user.id
+        and not request.user.is_staff
+    ):
+        raise Http404
+
+    try:
+        file_handle = prescription.prescription_file.open("rb")
+
+    except (OSError, ValueError):
+        raise Http404("Prescription file not found.")
+
+    filename = prescription.prescription_file.name.split("/")[-1]
+
+    response = FileResponse(
+        file_handle,
+        as_attachment=True,
+        filename=filename
+    )
+
+    response["X-Content-Type-Options"] = "nosniff"
+
+    return response
 

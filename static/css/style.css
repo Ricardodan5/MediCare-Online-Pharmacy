@@ -492,3 +492,117 @@ footer {
         padding: 23px;
     }
 }
+/* Prescription Status Labels */
+
+.status-approved {
+    background-color: #d1fae5;
+    color: #065f46;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.status-rejected {
+    background-color: #fee2e2;
+    color: #991b1b;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.status-pending {
+    background-color: #fef3c7;
+    color: #92400e;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.prescription-card {
+    background: #ffffff;
+    border: 1px solid #dbe3ea;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+.prescription-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: #ffffff;
+    border: 2px solid #d5e8dd;
+    border-radius: 14px;
+    padding: 25px;
+    margin: 0;
+    min-width: 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+}
+
+.prescription-card h3 {
+    width: 100%;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #d5e8dd;
+    color: #087c59;
+    margin-bottom: 18px;
+}
+
+.prescription-card p {
+    width: 100%;
+    margin-bottom: 14px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+/* PRESCRIPTION PAGE LAYOUT */
+
+.prescriptions-page-card {
+    max-width: 1100px;
+    width: 100%;
+}
+
+/* Display prescription cards side by side */
+
+.prescription-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+    width: 100%;
+    margin-top: 25px;
+}
+
+/* Individual prescription card */
+
+.prescription-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: #ffffff;
+    border: 2px solid #d5e8dd;
+    border-radius: 14px;
+    padding: 25px;
+    min-width: 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+}
+
+.prescription-card h3 {
+    width: 100%;
+    color: #087c59;
+    padding-bottom: 12px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid #d5e8dd;
+}
+
+.prescription-card p {
+    width: 100%;
+    margin-bottom: 14px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+/* Smaller screens: one card per row */
+
+@media (max-width: 650px) {
+    .prescription-grid {
+        grid-template-columns: 1fr;
+    }
+}
