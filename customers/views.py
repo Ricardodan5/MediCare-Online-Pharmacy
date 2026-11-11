@@ -210,36 +210,6 @@ def track_order(request, order_id):
     )
 
 @login_required
-def track_order(request, order_id):
-
-    order = get_object_or_404(
-        MedicineOrder,
-        id=order_id,
-        customer=request.user
-    )
-
-    return render(
-        request,
-        "customers/track_order.html",
-        {"order": order}
-    )
-
-@login_required
-def track_order(request, order_id):
-
-    order = get_object_or_404(
-        MedicineOrder,
-        id=order_id,
-        customer=request.user
-    )
-
-    return render(
-        request,
-        "customers/track_order.html",
-        {"order": order}
-    )
-
-@login_required
 def update_order_status(request, order_id):
 
     if not request.user.is_staff:
