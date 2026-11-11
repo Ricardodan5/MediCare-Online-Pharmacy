@@ -57,7 +57,12 @@
             </button>
         </form>
 
-        <hr>
+        <form method="POST" action="{% url 'logout' %}">
+            {% csrf_token %}
+
+            <button type="submit" class="logout-button">
+                Logout
+                        <hr>
 
                 <!-- Prescription Services -->
         <div class="prescription-services">
@@ -68,23 +73,9 @@
                 for pharmacist review.
             </p>
 
-            <a href="{% url 'prescriptions' %}" class="main-button">
-                Upload Prescription
-            </a>
-
-            <a href="{% url 'prescriptions' %}" class="main-button">
-                View My Prescriptions and Status
-            </a>
-        </div>
-
-        <hr>
-
-        <!-- Logout -->
-        <form method="POST" action="{% url 'logout' %}">
-            {% csrf_token %}
-
-            <button type="submit" class="logout-button">
-                Logout
+        <a href="{% url 'prescriptions' %}" class="main-button">
+            Upload Prescription
+        </a>
             </button>
         </form>
 
